@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.openclassrooms.realestatemanager">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android:name=android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/RealEstateManagerTheme">
+
+        <activity android:name=".view.resetpassword.ResetPasswordActivity"></activity>
+        <activity android:name=".view.login.LoginActivity" />
+        <activity android:name="com.openclassrooms.realestatemanager.view.mainActivity.MainActivity" />
+        <activity android:name=".view.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.SecondActivity" />
+        <activity
+            android:name="com.openclassrooms.realestatemanager.view.searchPropertyResult.SearchResultActivity"
+            android:label="Results"
+            android:parentActivityName="com.openclassrooms.realestatemanager.view.searchProperty.SearchActivity" />
+        <activity
+            android:name="com.openclassrooms.realestatemanager.view.searchProperty.SearchActivity"
+            android:label="@string/search_activity_name"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.openclassrooms.realestatemanager.view.mainActivity.MainActivity" />
+        <activity
+            android:name="com.openclassrooms.realestatemanager.view.detailsProperty.DetailActivity"
+            android:label="@string/details_activity_name" />
+        <activity
+            android:name="com.openclassrooms.realestatemanager.view.addAgent.AddAgentActivity"
+            android:label="@string/add_agent"
+            android:parentActivityName="com.openclassrooms.realestatemanager.view.mainActivity.MainActivity" />
+        <activity
+            android:name="com.openclassrooms.realestatemanager.view.addProperty.AddPropertyActivity"
+            android:label="@string/property_menu" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_path" />
+        </provider>
+        <provider
+            android:name=".provider.PropertyProvider"
+            android:authorities="com.openclassrooms.realestatemanager.provider"
+            android:exported="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
